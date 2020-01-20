@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startRemoveEmployee } from '../../actions/employee'
+import swal from 'sweetalert'
 
 function EmployeeList(props) {
     const handleRemove = (id) => {
-        if(window.confirm('Are you Sure?')) {
+        if(swal('Are you Sure?')) {
             props.dispatch(startRemoveEmployee(id))
         }
     }

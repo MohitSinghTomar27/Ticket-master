@@ -1,4 +1,5 @@
 import axios from "../config/axios"
+import swal from 'sweetalert'
 
 export const setTickets = (tickets) => {
     return {
@@ -19,7 +20,7 @@ export const startSetTickets = () => {
                 dispatch(setTickets(tickets))
             })
             .catch((err) => {
-                window.alert(err)
+               swal(err)
             })
     }   
 }
@@ -40,14 +41,14 @@ export const startAddTicket = (formData, props) => {
         })
             .then((response) => {
                 if(response.data.errmsg) {
-                    window.alert(response.data.errmsg)
+                    swal(response.data.errmsg)
                 } else {
                     dispatch(addTicket(response.data))
                     props.history.push('/tickets')
                 }
             })
             .catch((err) => {
-                window.alert(err)
+                swal(err)
             })
     }   
 }
@@ -68,14 +69,14 @@ export const startEditTicket = (formData, props) => {
         })
             .then((response) => {
                 if(response.data.errmsg) {
-                    window.alert(response.data.errmsg)
+                   swal(response.data.errmsg)
                 } else {
                     dispatch(editTicket(response.data))
                     props.history.push('/tickets')
                 }
             })
             .catch((err) => {
-                window.alert(err)
+                swal(err)
             })
     }
 }
@@ -98,7 +99,7 @@ export const startRemoveTicket = (id) => {
                 dispatch(removeTicket(id))
             })
             .catch((err) => {
-                window.alert(err)
+               swal(err)
             })
     }
 }

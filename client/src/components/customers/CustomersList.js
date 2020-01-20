@@ -2,13 +2,25 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startRemoveCustomer } from '../../actions/customers'
+import swal from 'sweetalert'
 
 function CustomersList(props) {
     const handleRemove = (id) => {
-        if(window.confirm('Are you Sure?')) {
-            props.dispatch(startRemoveCustomer(id))
-        }
-    }
+        swal({
+                 title: "Are you sure you want to Delete?",
+                 icon: "warning",
+                 buttons: true,
+                 dangerMode: true,
+               })
+               .then((willDelete) => {
+                 if (willDelete) {
+                   swal("Successfully Deleted", {
+                     icon: "success",
+                   });
+                   this.props.dispatch(startRemoveCustomer(id))
+                 } 
+               })
+     }
 
     return (
         <div className="container mt-5">

@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startRemoveTicket } from '../../actions/ticket'
+import swal from 'sweetalert'
 
 function TicketList(props) {
     const handleRemove = (id) => {
-        if(window.confirm('Are you Sure?')) {
+        if(swal('Are you Sure?')) {
             props.dispatch(startRemoveTicket(id))
         }
     }
@@ -42,6 +43,10 @@ function TicketList(props) {
                                     <td><Link to={`/tickets/show/${ticket._id}`} className="btn btn-primary">Show</Link></td>
                                     <td><Link to={`/tickets/${ticket._id}`} className="btn btn-secondary">Edit</Link></td>
                                     <td><button className="btn btn-danger" onClick={ () => {
+                              swal("Are you sure you want to do this?", {
+                                buttons: ["Oh noez!", true],
+                              });
+                              
                                         handleRemove(ticket._id)
                                     }} >Remove</button></td>
                                 </tr>

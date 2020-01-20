@@ -19,7 +19,7 @@ class DepartmentForm extends React.Component {
         if(this.state.name) {
             this.props.handleSubmit(formData)
         } else {
-            this.setState({ nameError: '* Filed is required!'})
+            this.setState({ nameError: '* Filed is required !!'})
         }
     }
     handleChange = (e) => {
