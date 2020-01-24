@@ -17,7 +17,7 @@ function CustomersList(props) {
                    swal("Successfully Deleted", {
                      icon: "success",
                    });
-                   this.props.dispatch(startRemoveCustomer(id))
+                   props.dispatch(startRemoveCustomer(id))
                  } 
                })
      }

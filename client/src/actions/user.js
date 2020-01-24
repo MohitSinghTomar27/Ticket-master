@@ -93,7 +93,7 @@ export const startRemoveUser = () => {
         })
             .then((response) => {
                 swal(response.data)
-                localStorage.clear('x-uath')
+                localStorage.clear('x-auth')
                 dispatch(setUser({}))
                 dispatch(setCustomers([{}]))
                 dispatch(setDepartments([{}]))

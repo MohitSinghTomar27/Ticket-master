@@ -2,12 +2,24 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startRemoveDepartment } from '../../actions/department'
+import swal from 'sweetalert'
 
 function DepartmentList(props) {
     const handleRemove = (id) => {
-        if(window.confirm('Are you Sure?')) {
+        swal({
+            title: "Are you sure you want to Delete?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Successfully Deleted", {
+                icon: "success",
+              });
             props.dispatch(startRemoveDepartment(id))
-        }
+            }
+        })
     }
 
     return (

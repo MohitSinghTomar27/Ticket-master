@@ -6,9 +6,21 @@ import swal from 'sweetalert'
 
 function EmployeeList(props) {
     const handleRemove = (id) => {
-        if(swal('Are you Sure?')) {
-            props.dispatch(startRemoveEmployee(id))
-        }
+        swal({
+            title: "Are you sure you want to Delete?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Successfully Deleted", {
+                icon: "success",
+              });
+              props.dispatch(startRemoveEmployee(id))
+            }
+        })
+
     }
 
     return (

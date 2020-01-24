@@ -6,9 +6,20 @@ import swal from 'sweetalert'
 
 function TicketList(props) {
     const handleRemove = (id) => {
-        if(swal('Are you Sure?')) {
-            props.dispatch(startRemoveTicket(id))
-        }
+        swal({
+            title: "Are you sure you want to Delete?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Successfully Deleted", {
+                icon: "success",
+              });
+                props.dispatch(startRemoveTicket(id))
+            }
+        })
     }
 
     return (
